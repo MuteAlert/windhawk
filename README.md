@@ -26,11 +26,12 @@ inside Explorer and does not require the standalone MuteAlert application.
 1. Install [Windhawk](https://windhawk.net/).
 2. Open **Create a new mod** in Windhawk.
 3. Replace the template with
-   [`microphone-activity-taskbar-widget.wh.cpp`](microphone-activity-taskbar-widget.wh.cpp).
+   [`mutealert.wh.cpp`](mutealert.wh.cpp).
 4. Compile the mod, then enable it for `explorer.exe`.
 
-The mod keeps its original ID, `microphone-activity-taskbar-widget`, so an
-existing local installation can be upgraded without creating a duplicate.
+The catalogue ID is `mutealert`. If you previously installed a local build
+using the old `microphone-activity-taskbar-widget` ID, remove that mod before
+installing the catalogue version to avoid duplicate taskbar icons.
 
 ## Headset limitations
 
@@ -49,4 +50,3 @@ and diagnostic privacy details.
 ## License
 
 MIT. See [LICENSE](LICENSE).
-

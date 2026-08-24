@@ -1,12 +1,15 @@
 // ==WindhawkMod==
-// @id              microphone-activity-taskbar-widget
+// @id              mutealert
 // @name            MuteAlert - Microphone Activity Taskbar Widget
 // @description     Shows live microphone activity, call mute state, volume controls, and headset mute synchronization in the Windows 11 taskbar.
-// @version         0.9.0
+// @version         0.9.1
 // @author          Nikolay
+// @github          https://github.com/Nikolay1243
+// @homepage        https://github.com/MuteAlert/windhawk
 // @include         explorer.exe
 // @architecture    x86-64
 // @compilerOptions -lole32 -loleaut32 -lruntimeobject -lcomctl32 -luuid -lsetupapi -lhid
+// @license         MIT
 // ==/WindhawkMod==
 
 // Licensed under the MIT License.
@@ -3658,7 +3661,7 @@ static bool HookTaskbarSymbols() {
         LoadLibraryExW(L"taskbar.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
     if (!module) return false;
 
-    WindhawkUtils::SYMBOL_HOOK hooks[] = {
+    WindhawkUtils::SYMBOL_HOOK taskbarDllHooks[] = {
         {{LR"(const CTaskBand::`vftable'{for `ITaskListWndSite'})"},
          &CTaskBand_ITaskListWndSite_vftable},
         {{LR"(const CSecondaryTaskBand::`vftable'{for `ITaskListWndSite'})"},
@@ -3679,7 +3682,8 @@ static bool HookTaskbarSymbols() {
          &CSecondaryTray_InitModelAndHost_Original,
          CSecondaryTray_InitModelAndHost_Hook},
     };
-    return WindhawkUtils::HookSymbols(module, hooks, ARRAYSIZE(hooks));
+    return WindhawkUtils::HookSymbols(module, taskbarDllHooks,
+                                      ARRAYSIZE(taskbarDllHooks));
 }
 
 // -----------------------------------------------------------------------------
