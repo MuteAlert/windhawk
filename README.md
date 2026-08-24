@@ -4,22 +4,38 @@ MuteAlert adds a live microphone meter and call-mute controls directly to the
 Windows 11 taskbar. This repository contains the Windhawk edition; it runs
 inside Explorer and does not require the standalone MuteAlert application.
 
+![MuteAlert microphone activity widget](assets/taskbar-widget.png)
+
 ## Features
 
 - Live bottom-to-top microphone activity meter using Windows Core Audio.
 - Left-click Windows input mute/unmute and scroll-over volume control.
 - Optional volume lock which restores a chosen input level; scrolling updates
   and persists the locked target.
-- Active Slack, Microsoft Teams, and Zoom call icon with app logo, mute state,
+- Optional Slack, Microsoft Teams, and Zoom call icon with app logo, mute state,
   left-click focus, and right-click mute/unmute.
 - Speaking-while-call-muted warning with an optional Windows audio cue.
-- Zoom meeting persistence through `CptHost.exe` and an `Alt+A` fallback.
+- Zoom meeting persistence through `CptHost.exe` and an explicit opt-in,
+  three-attempt `Alt+A` fallback.
 - Headset mute synchronization through Windows hardware-mute reporting,
   standard USB HID microphone/call-mute controls, and vendor adapters.
 - SteelSeries Arctis Nova Pro Wireless high-confidence vendor integration.
 - Detection method and confidence in the taskbar tooltip.
 - Sanitized diagnostic export with HID descriptors and changed byte offsets,
   excluding device paths, serial numbers, and raw report values.
+
+Call-app monitoring and call synchronization are disabled by default. When
+enabled, capture-session gating avoids continuous UI Automation scans while a
+supported app isn't recording or already known to be in a call.
+
+## How it differs from existing microphone mods
+
+Unlike `mic-tray-control`, MuteAlert injects a native XAML taskbar widget with
+a live peak meter and an optional separate call-app badge. It also adds muted
+speech warnings and observable headset mute synchronization.
+`adaptive-microphone-icon-visibility` controls Windows' built-in microphone
+indicator; MuteAlert provides its own interactive meter, volume control, call
+state, and headset integration.
 
 ## Install
 
