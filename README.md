@@ -12,8 +12,8 @@ inside Explorer and does not require the standalone MuteAlert application.
 - Left-click Windows input mute/unmute and scroll-over volume control.
 - Optional volume lock which restores a chosen input level; scrolling updates
   and persists the locked target.
-- Optional Slack, Microsoft Teams, and Zoom call icon with app logo, mute state,
-  left-click focus, and right-click mute/unmute.
+- Optional Slack, Microsoft Teams, Zoom, and Google Meet call icon with app
+  logo, mute state, left-click focus, and right-click mute/unmute.
 - Speaking-while-call-muted warning with an optional Windows audio cue.
 - Zoom meeting persistence through `CptHost.exe` and an explicit opt-in,
   three-attempt `Alt+A` fallback.
@@ -27,6 +27,12 @@ inside Explorer and does not require the standalone MuteAlert application.
 Call-app monitoring and call synchronization are disabled by default. When
 enabled, capture-session gating avoids continuous UI Automation scans while a
 supported app isn't recording or already known to be in a call.
+
+Google Meet is detected through the accessible controls exposed by Chrome,
+Edge, Firefox, Brave, Vivaldi, Opera, or Arc. The meeting must be the active,
+visible browser tab; browsers don't expose an inactive tab's controls to
+Windows UI Automation. This integration uses no Google credentials or network
+access.
 
 ## How it differs from existing microphone mods
 
