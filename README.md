@@ -34,6 +34,15 @@ visible browser tab; browsers don't expose an inactive tab's controls to
 Windows UI Automation. This integration uses no Google credentials or network
 access.
 
+Turn on **Enable Google Meet integration** to opt in, including for the shared
+call badge and headset synchronization. Scans require an active browser capture
+session and a matching title. Audio-service child processes are linked only to
+verified ancestors using the same executable. Customize title fragments and
+browser executable filenames in Settings if necessary. Browser accessibility
+can increase CPU and memory use until the browser exits. Browser support is
+best-effort; Firefox has not been tested in a live meeting. Detection clears
+when capture stops or the controls are no longer observable.
+
 ## How it differs from existing microphone mods
 
 Unlike `mic-tray-control`, MuteAlert injects a native XAML taskbar widget with
